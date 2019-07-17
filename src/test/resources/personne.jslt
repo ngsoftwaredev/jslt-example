@@ -1,0 +1,31 @@
+let n1 = if (boolean(.nom)) trim(.nom) else " "
+let n2 = if (boolean(.pseudo_nom)) trim(.pseudo_nom) else " "
+let p1 = if (boolean(.prenom)) trim(.prenom) else " "
+let p2 = if (boolean(.pseudo_prenom)) trim(.pseudo_prenom) else " "
+
+let dedup_combo = text-array-deduplicate(flatten([
+  if (boolean(.nom) and boolean(.prenom))
+    [ trim(.nom + " " + .prenom), trim(.prenom + " " + .nom) ]
+  else [],
+  if (boolean(.nom) and boolean(.pseudo_prenom))
+    [ trim(.nom + " " + .pseudo_prenom), trim(.pseudo_prenom + " " + .nom) ]
+  else [],
+  if (boolean(.pseudo_nom) and boolean(.pseudo_prenom))
+    [ trim(.pseudo_nom + " " + .pseudo_prenom), trim(.pseudo_prenom + " " + .pseudo_nom) ]
+  else [],
+  if (boolean(.pseudo_nom) and boolean(.prenom))
+    [ trim(.pseudo_nom + " " + .prenom), trim(.prenom + " " + .pseudo_nom) ]
+  else [],
+  if (boolean(.nom) and not(boolean(.prenom)))
+    [ trim(.nom)]
+  else [],
+  if (boolean(.pseudo_nom) and not(boolean(.pseudo_prenom)))
+    [ trim(.pseudo_nom)]
+  else []
+]))
+
+{
+  "libelle": $dedup_combo,
+  "libelle_sort": [for ($dedup_combo) replace(., "[^\\p{L}\\p{N}]+", "") ],
+  * : .
+}

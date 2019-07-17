@@ -1,0 +1,9 @@
+{
+  "libelle" : [ "Debbouze Djamel", "Djamel Debbouze", "Debbouze jamel", "jamel Debbouze", "debouze jamel", "jamel debouze", "debouze Djamel", "Djamel debouze" ],
+  "libelle_sort" : [ "DebbouzeDjamel", "DjamelDebbouze", "Debbouzejamel", "jamelDebbouze", "debouzejamel", "jameldebouze", "debouzeDjamel", "Djameldebouze" ],
+  "matricule" : "12345",
+  "pseudo_prenom" : "jamel",
+  "pseudo_nom" : "debouze",
+  "nom" : "Debbouze",
+  "prenom" : "Djamel"
+}
